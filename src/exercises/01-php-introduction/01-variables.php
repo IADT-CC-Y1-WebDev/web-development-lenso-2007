@@ -50,6 +50,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $sandwichAmount = 2;
+        $waterAmount = 3;
+        $crispAmount = 2;
+
+        $sandwichPrice = 5.00;
+        $waterPrice = 2.50;
+        $crispPrice = 3.00;
+
+        $sandwichSubtotal = $sandwichPrice * $sandwichAmount;
+        $waterSubtotal = $waterPrice * $waterAmount;
+        $crispSubtotal = $crispPrice * $crispAmount;
+
+        $total = $sandwichSubtotal + $waterSubtotal + $crispSubtotal;
+        $discount = $total * 0.10;
+        $discountedPrice = $total - $discount;
+
+        echo "your total with 10% discount is €$discountedPrice";
         ?>
     </div>
 
@@ -65,6 +82,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $isStudent = true;
+        $hasDiscount = false;
+        $isPremiumMember = false;
+
+        echo "Are you registered as a student: " . ($isStudent ? "Yes" : "No") . "<br>";
+        echo "Do you have a discount: " . ($hasDiscount ? "Yes" : "No") . "<br>";
+        echo "Are you registered as a premium member: " . ($isPremiumMember ? "Yes" : "No");
         ?>
     </div>
 
