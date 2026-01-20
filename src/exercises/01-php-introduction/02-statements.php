@@ -27,6 +27,20 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $age = rand(0,80);
+        echo "Age: $age";
+        if ($age >= 0 and $age <= 12) {
+            echo "<p>Child</p>";
+        }
+        else if ($age >= 13 and $age <= 19) {
+            echo "<p>Teenager</p>";
+        }
+        else if ($age >= 20 and $age <=64) {
+            echo "<p>Adult</p>";
+        }
+        else if ($age >= 65) {
+            echo "<p>Senior</p>";
+        }
         ?>
     </div>
 
@@ -43,6 +57,30 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $day = rand(1,7);
+        switch ($day) {
+            case 1:
+                echo "<p>Monday - Weekday</p>";
+                break;
+            case 2:
+                echo "<p>Tuesday - Weekday</p>";
+                break;
+            case 3:
+                echo "<p>Wednesday - Weekday</p>";
+                break;
+            case 4:
+                echo "<p>Thursday - Weekday</p>";
+                break;
+            case 5:
+                echo "<p>Friday - Weekday</p>";
+                break;
+            case 6:
+                echo "<p>Saturday - Weekend</p>";
+                break;
+            case 7:
+                echo "<p>Sunday - Weekend</p>";
+                break;
+        }
         ?>
     </div>
 
@@ -58,6 +96,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $number = 9;
+        echo "<p>Nine times tables</p>";
+        for ($i = 0; $i < 11; $i++) {
+            echo "$number x $i = " . $number*$i . " <br/>"; 
+        }
         ?>
     </div>
 
@@ -73,6 +116,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $time = 10;
+        while ($time != -1) {
+            echo "$time" . "<br>";
+            $time = $time - 1;
+        }
+        echo "Blast off!"
         ?>
     </div>
 
