@@ -27,6 +27,10 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        echo "PHP_SELF => " . $_SERVER['PHP_SELF'] . "<br>";
+        echo "REQUEST_METHOD => " . $_SERVER['REQUEST_METHOD'] . "<br>";
+        echo "HTTP_HOST => " . $_SERVER['HTTP_HOST'] . "<br>";
+        echo "HTTP_USER_AGENT => " . $_SERVER['HTTP_USER_AGENT'] . "<br>";
         ?>
     </div>
 
@@ -43,6 +47,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        if(isset($_GET['name'])) {
+            echo "Hello, " . htmlspecialchars($_GET['name']) . "!";
+        }
+        else {
+            echo "Hello, Guest!";
+        }
+
         ?>
     </div>
 
@@ -60,6 +71,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        if (isset($_GET['product']) && isset($_GET['quantity'])) {
+        $product = htmlspecialchars($_GET['product']);
+        $quantity = htmlspecialchars($_GET['quantity']);
+
+        echo "You ordered $quantity $product";
+        } elseif (!isset($_GET['product']) && !isset($_GET['quantity'])) {
+            echo "Error: Product and quantity are missing";
+        } elseif (!isset($_GET['product'])) {
+            echo "Error: Product is missing";
+        } elseif (!isset($_GET['quantity'])) {
+            echo "Error: Quantity is missing";
+        }
         ?>
     </div>
 
