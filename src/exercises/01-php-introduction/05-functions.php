@@ -25,6 +25,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function celciusToFahrenheit($celcius) {
+            return ($celcius*9/5) + 32;
+        }
+
+        if (isset($_GET['celcius'])) {
+            $celcius = $_GET['celcius'];
+            $fahrenheit = celciusToFahrenheit($celcius);
+
+            echo $celcius . "°C = " . $fahrenheit . "°F";
+        }
         ?>
     </div>
 
@@ -41,6 +51,19 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function calculateRectangleArea($width, $height) {
+            if ($height === null) {
+                $height = $width;
+            }
+            return $width * $height;
+        }
+
+        if (isset($_GET['width'])) {
+            $width = $_GET['width'];
+            $height = $_GET['height'] ?? null;
+
+            echo "Area = " . calculateRectangleArea($width, $height);
+        }
         ?>
     </div>
 
@@ -57,6 +80,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function checkEvenOdd($number) {
+            if ($number % 2 == 0) {
+                return "Even";
+            } else {
+                return "Odd";
+            }
+        }
+
+        if (isset($_GET['number'])) {
+            echo checkEvenOdd($_GET['number']);
+        }
         ?>
     </div>
 
@@ -73,6 +107,8 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        
+
         ?>
     </div>
 
