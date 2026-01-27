@@ -34,7 +34,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        $student1 = new Student("Mark Johnson", "647564");
+        $student2 = new Student("Mary Johnson", "238343");
+        
+        echo "Student 1 name: " . $student1->getName() . "<br>";
+        echo "Student 1 number: " . $student1->getNumber() . "<br>" . "<br>";
+
+        echo "Student 2 name: " . $student2->getName() . "<br>";
+        echo "Student 2 number: " . $student2->getNumber();
         ?>
     </div>
 
@@ -55,7 +64,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        $student1 = new Student("Mark Johnson", "647564");
+        $student2 = new Student("Mary Johnson", "238343");
+        
+        echo "Student 1 name: " . $student1->getName() . "<br>";
+        echo "Student 1 number: " . $student1->getNumber() . "<br>" . "<br>";
+
+        echo "Student 2 name: " . $student2->getName() . "<br>";
+        echo "Student 2 number: " . $student2->getNumber();
+
         ?>
     </div>
 
@@ -76,12 +95,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
-        // try {
-        //     $student = new Student("Alice", "");
-        // } catch (Exception $e) {
-        //     echo "Error: " . $e->getMessage();
-        // }
+        require_once __DIR__ . '/classes/Student.php';
+        try {
+            $student = new Student("Alice", "");
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
         ?>
     </div>
 

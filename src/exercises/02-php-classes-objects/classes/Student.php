@@ -1,12 +1,16 @@
 <?php 
 
 class Student {
-    public $name;
-    public $number;
+    protected $name;
+    protected $number;
 
     public function __construct($name, $number) {
         $this->name = $name;
         $this->number = $number;
+
+        if (empty($number)) {
+            throw new Exception("Enter a student number");
+        }
     }
 
     public function getName() {
