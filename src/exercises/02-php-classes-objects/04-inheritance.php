@@ -37,7 +37,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $student = new Undergrad("Mark Johnson", "647564", "Computer Science", "1");
+
+        echo $student->getName();
+
+        //$student = null;
         ?>
     </div>
 
@@ -58,7 +64,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $student1 = new Undergrad("Mark Johnson II", "647564", "Computer Science", "1");
+        
+        echo "Name: " . $student1->getName() . "<br><br>";
+        echo "Number: " . $student1->getNumber() . "<br><br>";
+        echo "Course: " . $student1->getCourse() . "<br><br>";
+        echo "Year: " . $student1->getYear();
+
+        //$student1 = null;
+
         ?>
     </div>
 
@@ -75,7 +91,36 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $student2 = new Undergrad("Mark Johnson III", "647564", "Computer Science", "1");
+        $student3 = new Undergrad("Sam Johnson", "897843", "Medicine", "4");
+        $student4 = new Undergrad("Mary Johnson", "745744", "Business", "3");
+
+        echo "Name: " . $student2->getName() . "<br><br>";
+        echo "Number: " . $student2->getNumber() . "<br><br>";
+        echo "Course: " . $student2->getCourse() . "<br><br>";
+        echo "Year: " . $student2->getYear() . "<br><br>";
+
+        //$student2 = null;
+
+
+        echo "Name: " . $student3->getName() . "<br><br>";
+        echo "Number: " . $student3->getNumber() . "<br><br>";
+        echo "Course: " . $student3->getCourse() . "<br><br>";
+        echo "Year: " . $student3->getYear() . "<br><br>";
+
+        //$student3 = null;
+
+
+        echo "Name: " . $student4->getName() . "<br><br>";
+        echo "Number: " . $student4->getNumber() . "<br><br>";
+        echo "Course: " . $student4->getCourse() . "<br><br>";
+        echo "Year: " . $student4->getYear() . "<br><br>";
+
+        //$student4 = null;
+
+        echo "Finished";
         ?>
     </div>
 
