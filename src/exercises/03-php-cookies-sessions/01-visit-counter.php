@@ -30,7 +30,7 @@ setcookie('visit_count', $visitCount, $expiryTime, '/');
 // TODO Exercise 3: Write your solution here
 if (isset($_GET['reset'])) {
     $expiryTime = time() - (60 * 60);
-    setcookie('visit_count', $expiryTime, '/');
+    setcookie('visit_count', '', $expiryTime, '/');
     header("location: 01-visit-counter.php");
     exit();
 }
