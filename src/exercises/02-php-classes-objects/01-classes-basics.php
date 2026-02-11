@@ -37,8 +37,8 @@
         // Step 3: Create a student and display their details
         $student = new Student("Mark Johnson", "475378");
 
-        echo "Student name: " . $student->name . "<br>";
-        echo "Student number: " . $student->number;
+        echo "Student name: " . $student->getName() . "<br>";
+        echo "Student number: " . $student->getNumber();
         ?>
     </div>
 
@@ -64,11 +64,11 @@
         $student1 = new Student("Mark Johnson", "647564");
         $student2 = new Student("Mary Johnson", "238343");
 
-        echo "Student 1 name: " . $student1->name . "<br>";
-        echo "Student 1 number: " . $student1->number . "<br>" . "<br>";
+        echo "Student 1 name: " . $student1->getName() . "<br>";
+        echo "Student 1 number: " . $student1->getNumber() . "<br>" . "<br>";
 
-        echo "Student 2 name: " . $student2->name . "<br>";
-        echo "Student 2 number: " . $student2->number;
+        echo "Student 2 name: " . $student2->getName() . "<br>";
+        echo "Student 2 number: " . $student2->getNumber();
         ?>
     </div>
 

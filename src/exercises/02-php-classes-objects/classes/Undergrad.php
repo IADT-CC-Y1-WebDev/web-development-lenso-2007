@@ -21,5 +21,8 @@
       return $this->year;
    }
 
+   public function __toString() {
+      return "Undergrad: {$this->name}, Balance: €{$this->balance}";
+   }
 
  }
