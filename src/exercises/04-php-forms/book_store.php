@@ -24,8 +24,6 @@ $errors = [];
 // Start the session
 startSession();
 
-dd($_FILES);
-
 try {
     // =========================================================================
     // STEP 1: View Posted Data
@@ -64,8 +62,6 @@ try {
         'description' => $_POST['description'] ?? null,
         'cover' => $_FILES['cover'] ?? null
     ];
-
-    dd($data);
 
     // =========================================================================
     // STEP 4: Validate Data
@@ -126,7 +122,8 @@ try {
     // See: /examples/04-php-forms/step-10-complete/
     // =========================================================================
     // TODO: Clear form data on success (before redirect)
-
+    clearFormData();
+    clearFormErrors();
 
     // =========================================================================
     // STEP 8: Flash Messages
@@ -134,6 +131,10 @@ try {
     // =========================================================================
     // TODO: On successful registration, set a success flash message and 
     // redirect back to the form
+    setFlashMessage('success', 'Form created successfully');
+
+
+    redirect("success.php");
 }
 catch (Exception $e) {
     // =========================================================================
@@ -158,6 +159,7 @@ catch (Exception $e) {
     // See: /examples/04-php-forms/step-08-flash-messages/
     // =========================================================================
     // TODO: On validation error, you set an error flash message
+    setFlashMessage('error', 'Form validation unsuccessful');
 
     redirect("book_create.php");
 }
