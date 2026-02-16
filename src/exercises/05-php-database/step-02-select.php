@@ -52,7 +52,35 @@ catch (PDOException $e) {
             // 2. Fetch all results
             // 3. Display count
             // 4. Create HTML table with the results
+            $stmt = $db->query("SELECT * FROM books ORDER BY title");
+            $books = $stmt->fetchAll();
+
+            echo "<p>Found " . count($books) . " books</p>";
+            foreach ($books as $book) {
+                echo "<p>" . $book['title'] . "</p>";
+            }
             ?>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <?php foreach ($books as $book): ?>
+            <tr>
+                <td><?= $book['id'] ?></td>
+                <td><?= htmlspecialchars($book['title']) ?></td>
+                <td><?= $book['year'] ?></td>
+                <td><?= $book['author'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
