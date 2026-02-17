@@ -76,16 +76,16 @@ catch (PDOException $e) {
             // 3. Loop through and display results
             $author = "George";
             $stmt = $db->prepare("SELECT * FROM books WHERE author LIKE :search");
-            $stmt->execute(['search' => '&' . $author . '&']);
+            $stmt->execute(['search' => '%' . $author . '%']);
             $books = $stmt->fetchAll();
             if ($books) {
                 foreach ($books as $book) {
-                    echo "found " . $book['title'] . " by " . $book['author'] . "<br>";
-                } 
-                } else {
-                    echo "not found";
+                    echo "found: " . $book['title'] . " by " . $book['author'] . "<br>";
                 }
-
+            } else {
+                echo "Not found";
+            }
+ 
             ?>
         </div>
     </div>
