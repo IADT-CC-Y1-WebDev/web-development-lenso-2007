@@ -47,7 +47,68 @@ catch (PDOException $e) {
             // 3. Execute with new description + timestamp
             // 4. Check rowCount()
             // 5. Fetch and display updated book
+
+            //1
+            $stmt = $db->prepare("SELECT * FROM books WHERE id = :id");
+            $stmt->execute([':id' => 1]);
+            $book = $stmt->fetch();
+            echo "Before update:\n";
             ?>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?= htmlspecialchars($book['id']) ?></td>
+                        <td><?= htmlspecialchars($book['title']) ?></td>
+                        <td><?= htmlspecialchars($book['description']) ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php
+            //2
+            $stmt = $db->prepare("
+                UPDATE books
+                SET description = :description
+                WHERE id = :id
+            ");
+
+            //3
+            $stmt->execute([
+                'description' => 'Updated description text at ', // . date("Y-m-d H:i:s"),
+                'id' => 1
+            ]);
+
+            //4
+            echo "Updated " . $stmt->rowCount() . " row(s)" . " at " . date('H:i:s');
+
+            //5
+            $stmt = $db->prepare("SELECT * FROM books WHERE id = :id");
+            $stmt->execute([':id' => 1]);
+            $updatedBook = $stmt->fetch();
+            echo " After update:\n";
+            ?>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?= htmlspecialchars($updatedBook['id']) ?></td>
+                        <td><?= htmlspecialchars($updatedBook['title']) ?></td>
+                        <td><?= htmlspecialchars($updatedBook['description']) ?></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
