@@ -35,6 +35,23 @@ require_once __DIR__ . '/lib/config.php';
             // 3. Display the count
             // 4. Get DB::getInstance() twice and compare with ===
             // 5. Display whether they are the same instance
+
+            $db = DB::getInstance()->getConnection();
+
+            $stmt = $db->query("SELECT COUNT(*) AS total FROM books");
+            $result = $stmt->fetch();
+
+            echo "<p>Books in database: " . $result['total'] . "<br> <br>";
+
+            $instance1 = DB::getInstance();
+            $instance2 = DB::getInstance();
+
+            if ($instance1 === $instance2) {
+                echo "Same instance";
+            } else {
+                echo "Different instances";
+            }
+
             ?>
         </div>
     </div>
