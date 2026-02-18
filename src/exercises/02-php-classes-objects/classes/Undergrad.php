@@ -22,7 +22,7 @@
    }
 
    public function __toString() {
-      return "Undergrad: {$this->name}, Balance: €{$this->balance}";
+      return "Undergrad: {$this->name}, Number: {$this->number}, Course: {$this->course}, Year: {$this->year}";
    }
 
  }
