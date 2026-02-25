@@ -31,7 +31,7 @@ class Format
         return $formats;
     }
 
-    public static function findByBookId($bookId)
+    public static function findById($bookId)
     {
         $db = DB::getInstance()->getConnection();
  
