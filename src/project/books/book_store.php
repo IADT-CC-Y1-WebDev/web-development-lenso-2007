@@ -25,6 +25,8 @@ try {
         'image' => $_FILES['image'] ?? null
     ];
 
+      
+
     $rules = [
         'title' => 'required|notempty|min:1|max:255',
         'author' => 'required|notempty|min:1|max:255',
@@ -67,10 +69,12 @@ try {
     $book->description = $data['description'];
     $book->cover_filename = $coverFilename;
 
+ 
+
     $book->save();
     if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
         foreach ($data['format_ids'] as $formatId) {
-            if (Format::findByFormat($formatId)) {
+            if (Format::findById($formatId)) {
                 bookFormat::create($book->id, $formatId);
             }
         }
