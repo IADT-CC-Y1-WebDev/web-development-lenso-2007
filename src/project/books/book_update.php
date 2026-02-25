@@ -19,6 +19,7 @@ try {
 
     // Get form data
     $data = [
+        'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
         'publisher_id' => $_POST['publisher_id'] ?? null,
@@ -38,7 +39,7 @@ try {
         'isbn' => 'required|notempty|min:1|max:20',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'cover_filename' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
     // Validate all data (including file)
@@ -89,7 +90,7 @@ try {
     // Update the book instance
     $book->title = $data['title'];
     $book->author = $data['author'];
-    $book->year = $data['release_date'];
+    $book->year = $data['year'];
     $book->isbn = $data['isbn'];
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
@@ -101,7 +102,7 @@ try {
     $book->save();
 
     // Delete existing format associations
-    bookFormat::deleteByBookId($book->id);
+    bookFormat::deleteByBook($book->id);
     // Create new format associations
     if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
         foreach ($data['format_ids'] as $formatId) {

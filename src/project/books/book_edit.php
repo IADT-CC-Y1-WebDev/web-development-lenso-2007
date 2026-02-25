@@ -20,7 +20,7 @@ try {
         throw new Exception("Book not found.");
     }
 
-    $bookFormats = Format::findByBookId($book->id);
+    $bookFormats = Format::findById($book->id);
     $bookFormatsIds = [];
     foreach ($bookFormats as $format) {
         $bookFormatsIds[] = $format->id;
@@ -61,10 +61,24 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="release_date">Release Year:</label>
+                        <label class="special" for="author">Author:</label>
                         <div>
-                            <input type="number" id="release_date" name="release_date" value="<?= old('release_date', $book->release_date) ?>" required>
-                            <p><?= error('release_date') ?></p>
+                            <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
+                            <p><?= error('title') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label class="special" for="">Year:</label>
+                        <div>
+                            <input type="number" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
+                            <p><?= error('year') ?></p>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label class="special" for="isbn">ISBN:</label>
+                        <div>
+                            <input type="text" id="isbn" name="isbn" value="<?= old('isbn', $book->isbn) ?>" required>
+                            <p><?= error('isbn') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -104,11 +118,11 @@ catch (PDOException $e) {
                         </div>
                         <p><?= error('format_ids') ?></p>
                     </div>
-                    <div><img src="images/<?= $book->image_filename ?>" /></div>
+                    <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
                         <label class="special" for="image">Image (optional):</label>
                         <div>
-                            <input type="file" id="image" name="image" accept="image/*">
+                            <input type="file" id="image" name="cover_filename" accept="image/*">
                             <p><?= error('image') ?></p>
                         </div>
                     </div>
