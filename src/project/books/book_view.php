@@ -14,11 +14,11 @@ try {
     }
  
     $publisher = Publisher::findById($book->publisher_id);
-    $formats = Format::findByBookId($book->id);
+    $formats = Format::findById($book->id);
  
     $formatNames = [];
     foreach ($formats as $format) {
-        $formatNames[] = htmlspecialchars($format->name);
+        $formatNames[] = htmlspecialchars($format->name ?? "");
     }
 }
 catch (PDOException $e) {
