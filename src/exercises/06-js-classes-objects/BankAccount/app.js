@@ -1,8 +1,8 @@
-import BankAccount from "./classes/BankAccount";
-import SavingsAccount from "./classes/SavingsAccount";
+import BankAccount from "./classes/BankAccount.js";
+import SavingsAccount from "./classes/SavingsAccount.js";
 
-bank = new BankAccount("1111111111", "Alice", 100.00);
-savings = new SavingsAccount("2222222222", "Bob", 500.00, 0.05);
+let bank = new BankAccount("1111111111", "Alice", 100.00);
+let savings = new SavingsAccount("2222222222", "Bob", 500.00, 0.05);
 
-console.log(bank);
-console.log(savings);
+console.log(bank.toString());
+console.log(savings.toString());
