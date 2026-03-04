@@ -55,9 +55,9 @@
         <?php
         // TODO: Write your solution here
         require_once __DIR__ . '/classes/College/Student.php';
-        // use College\Student;
-        // $student = new Student("Bob", "C12346");
-        // echo $student;
+        use College\Student;
+        $student = new Student("Bob", "C12346");
+        echo $student;
         ?>
     </div>
 
@@ -82,7 +82,7 @@
         require_once __DIR__ . '/classes/College/Student.php';
         require_once __DIR__ . '/classes/College/Undergrad.php';
         require_once __DIR__ . '/classes/College/Postgrad.php';
-        use College\Student;
+        // use College\Student;
         use College\Undergrad;
         use College\Postgrad;
         $student = new Student("Sam Johnson I", "897843");
