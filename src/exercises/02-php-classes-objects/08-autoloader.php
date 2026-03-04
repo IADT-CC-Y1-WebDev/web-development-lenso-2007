@@ -38,16 +38,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // spl_autoload_register(function ($class) {
-        //     $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-        //     $file = __DIR__ . '/classes/' . $path . '.php';
-        //     if (file_exists($file)) {
-        //         require_once $file;
-        //     }
-        // });
-        // use College\Student;
-        // $student = new Student("Alice", "C12345");
-        // echo $student;
+        spl_autoload_register(function ($class) {
+            $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+            $file = __DIR__ . '/classes/' . $path . '.php';
+                if (file_exists($file)) {
+                    require_once $file;
+                }
+            });
+            use College\Student;
+            $student = new Student("Alice", "C12345");
+            echo $student;
         ?>
     </div>
 
@@ -65,10 +65,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/etc/config.php';
+        require_once __DIR__ . '/etc/config.php';
         // use College\Student;
-        // use College\Undergrad;
-        // use College\Postgrad;
+        use College\Undergrad;
+        use College\Postgrad;
+
+        $student = new Student("Sam Johnson I", "897843");
+        $undergrad = new Undergrad("Mark Johnson I", "647564", "Computer Science", "1");
+        $postgrad = new Postgrad("Mary Johnson I", "745744", "Dr. Murphy", "Medicine");
+
+        echo $student . "<br> <br>";
+        echo $undergrad . "<br> <br>";
+        echo $postgrad;
         ?>
     </div>
 
@@ -93,6 +101,30 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        require_once __DIR__ . '/etc/config.php';
+
+        // use College\Student;
+        // use College\Undergrad;
+        // use College\Postgrad;
+
+        $student = new Student("Sam Johnson II", "897843");
+        $undergrad = new Undergrad("Mark Johnson II", "647564", "Computer Science", "1");
+        $postgrad = new Postgrad("Mary Johnson II", "745744", "Dr. Murphy", "Medicine");
+
+        echo "Find all:<br><br>";
+        $allStudents = Student::findAll();
+        foreach ($allStudents as $student) {
+            echo $student . "<br><br>";
+        }
+
+        echo "Find Student By Number (647564):<br><br>";
+        $foundStudent = Student::findByNumber("647564");
+
+        if ($foundStudent) {
+            echo $foundStudent;
+        } else {
+            echo "Student not found.";
+        }
         ?>
     </div>
 
