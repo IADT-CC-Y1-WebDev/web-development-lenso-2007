@@ -28,11 +28,11 @@ try {
       
 
     $rules = [
-        'title' => 'required|notempty|min:1|max:255',
-        'author' => 'required|notempty|min:1|max:255',
+        'title' => 'required|notempty|min:3|max:255',
+        'author' => 'required|notempty|min:3|max:255',
         'publisher_id' => 'required|integer',
-        'year' => 'required|notempty',
-        'isbn' => 'required|notempty|min:1|max:20',
+        'year' => 'required|notempty|integer|minvalue:1900|maxvalue:2099',
+        'isbn' => 'required|notempty|integer|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
         'image' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'

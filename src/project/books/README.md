@@ -28,7 +28,7 @@ Your application should follow this folder structure:
 
 ```
 books/
-├── index.php              # Landing page / navigation
+├── book_list.php              # Landing page / navigation
 ├── book_list.php          # Display all books
 ├── book_view.php          # Display a single book
 ├── book_create.php        # Form to create a new book
@@ -135,7 +135,7 @@ Implement the ability to delete books.
 
 Create the application landing page.
 
-- [ ] Create `index.php`
+- [ ] Create `book_list.php`
 - [ ] Add navigation to the book list
 - [ ] Include any welcome content or application description
 

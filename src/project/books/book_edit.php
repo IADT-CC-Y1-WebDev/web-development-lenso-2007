@@ -31,7 +31,7 @@ try {
 }
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
-    redirect('/index.php');
+    redirect('/book_list.php');
 }
 ?>
 <!DOCTYPE html>
@@ -64,7 +64,7 @@ catch (PDOException $e) {
                         <label class="special" for="author">Author:</label>
                         <div>
                             <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
-                            <p><?= error('title') ?></p>
+                            <p><?= error('author') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -128,7 +128,7 @@ catch (PDOException $e) {
                     </div>
                     <div class="input">
                         <button class="button" type="submit">Update Book</button>
-                        <div class="button"><a href="index.php">Cancel</a></div>
+                        <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
                 </form>
             </div>

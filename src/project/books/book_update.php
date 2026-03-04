@@ -32,11 +32,12 @@ try {
 
     // Define validation rules
     $rules = [
-        'title' => 'required|notempty|min:1|max:255',
-        'author' => 'required|notempty|min:1|max:255',
+        'id' => 'required|integer',
+        'title' => 'required|notempty|min:3|max:255',
+        'author' => 'required|notempty|min:3|max:255',
         'publisher_id' => 'required|integer',
-        'year' => 'required|notempty',
-        'isbn' => 'required|notempty|min:1|max:20',
+        'year' => 'required|notempty|integer|minvalue:1900|maxvalue:2099',
+        'isbn' => 'required|notempty|integer|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
         'cover_filename' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
@@ -139,6 +140,6 @@ catch (Exception $e) {
         redirect('book_edit.php?id=' . $data['id']);
     }
     else {
-        redirect('index.php');
+        redirect('book_list.php');
     }
 }

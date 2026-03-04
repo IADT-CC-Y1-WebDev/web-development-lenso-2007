@@ -103,7 +103,7 @@
 </head>
 <body>
     <div class="instructions">
-        <p class="back-link"><a href="/index.php">&larr; Back to Module Home</a></p>
+        <p class="back-link"><a href="/book_list.php">&larr; Back to Module Home</a></p>
 
         <h1>Books Application Project</h1>
 
@@ -158,7 +158,7 @@
         <h2>Project Structure</h2>
         <p>Your application should follow this folder structure:</p>
         <pre><code>books/
-├── index.php              # Landing page / navigation
+├── book_list.php              # Landing page / navigation
 ├── book_list.php          # Display all books
 ├── book_view.php          # Display a single book
 ├── book_create.php        # Form to create a new book
@@ -265,7 +265,7 @@
         <h4>Step 8: Landing Page</h4>
         <p>Create the application landing page.</p>
         <ul class="checklist">
-            <li>Create <code>index.php</code></li>
+            <li>Create <code>book_list.php</code></li>
             <li>Add navigation to the book list</li>
             <li>Include any welcome content or application description</li>
         </ul>
@@ -318,7 +318,7 @@
         <h2>Submission</h2>
         <p><em>Your submission requirements and deadlines will be provided separately.</em></p>
 
-        <p class="back-link" style="margin-top: 2rem;"><a href="/index.php">&larr; Back to Module Home</a></p>
+        <p class="back-link" style="margin-top: 2rem;"><a href="/book_list.php">&larr; Back to Module Home</a></p>
     </div>
 </body>
 </html>
