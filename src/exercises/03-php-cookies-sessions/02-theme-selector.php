@@ -65,7 +65,7 @@ if (isset($_GET['session_theme'])) {
 // TODO: Handle reset actions here
 if (isset($_GET['reset_cookie'])) {
     $now = time();
-    $expiry = $time - 3600;
+    $expiry = $now - 3600;
     setcookie('theme', '', $expiry, '/');
 
     header('Location: 02-theme-selector.php');
@@ -95,6 +95,17 @@ $themes = [
 // Bonus Exercise: Apply selected theme to page background and text color
 // -----------------------------------------------------------------------------
 // TODO: Determine which theme to apply (cookie takes precedence over session)
+
+$activeTheme = 'light';
+
+if (isset($_COOKIE['theme']) && isset($themes[$_COOKIE['theme']])) {
+    $activeTheme = $_COOKIE['theme'];
+} elseif (isset($_SESSION['theme']) && isset($themes[$_SESSION['theme']])) {
+    $activeTheme = $_SESSION['theme'];
+}
+
+$bgColor = $themes[$activeTheme]['bg'];
+$textColor = $themes[$activeTheme]['text'];
 
 // =============================================================================
 ?>
@@ -134,7 +145,7 @@ $themes = [
 // -----------------------------------------------------------------------------
 // TODO: Apply the selected theme to the page by setting inline styles on <body>
 ?>
-<body style="">
+<body style="background: <?= $bgColor ?>; color: <?= $textColor ?>;">
 <?php
 // =============================================================================
 ?>
