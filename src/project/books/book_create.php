@@ -30,7 +30,7 @@ catch (PDOException $e) {
                 <h1>Create Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_store.php" method="POST" enctype="multipart/form-data">
+                <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
@@ -97,10 +97,10 @@ catch (PDOException $e) {
                         <p><?= error('format_ids') ?></p>
                     </div>
                     <div class="input">
-                        <label class="special" for="image">Image (required):</label>
+                        <label class="special" for="cover">Image (required):</label>
                         <div>
-                            <input type="file" id="image" name="image" accept="image/*" required>
-                            <p><?= error('image') ?></p>
+                            <input type="file" id="cover" name="cover" accept="image/*">
+                            <p><?= error('cover') ?></p>
                         </div>
                     </div>
                     <div class="input">

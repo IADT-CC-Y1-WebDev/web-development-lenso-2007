@@ -1,14 +1,15 @@
 <?php
-require_once 'php/lib/config.php';
-require_once 'php/lib/session.php';
-require_once 'php/lib/forms.php';
-require_once 'php/lib/utils.php';
+require_once './php/lib/config.php';
+require_once './php/lib/session.php';
+require_once './php/lib/forms.php';
+require_once './php/lib/utils.php';
 
+    $data = [];
+    $errors = [];
 startSession();
 
 try {
-    $data = [];
-    $errors = [];
+
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Invalid request method.');
@@ -22,7 +23,7 @@ try {
         'isbn' => $_POST['isbn'] ?? null,
         'description' => $_POST['description'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
-        'image' => $_FILES['image'] ?? null
+        'cover' => $_FILES['cover'] ?? null
     ];
 
       
@@ -35,7 +36,7 @@ try {
         'isbn' => 'required|notempty|integer|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'image' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
     $validator = new Validator($data, $rules);
@@ -54,7 +55,7 @@ try {
     }
 
     $uploader = new ImageUpload();
-    $coverFilename = $uploader->process($_FILES['image']);
+    $coverFilename = $uploader->process($_FILES['cover']);
 
     if (!$coverFilename) {
         throw new Exception('Failed to process and save the image.');
