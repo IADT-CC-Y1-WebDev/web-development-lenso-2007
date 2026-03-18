@@ -31,10 +31,14 @@ catch (PDOException $e) {
             </div>
             <div class="width-12">
                 <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
+
+                    <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
+
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
                             <input type="text" id="title" name="title" value="<?= old('title') ?>" required>
+                            <span id="title_error" class="error"></span>
                             <p><?= error('title') ?></p>
                         </div>
                     </div>
@@ -42,6 +46,7 @@ catch (PDOException $e) {
                         <label class="special" for="author">Author:</label>
                         <div>
                             <input type="text" id="author" name="author" value="<?= old('author') ?>" required>
+                            <span id="author_error" class="error"></span>
                             <p><?= error('author') ?></p>
                         </div>
                     </div>
@@ -49,6 +54,7 @@ catch (PDOException $e) {
                         <label class="special" for="year">Release Year:</label>
                         <div>
                             <input type="number" id="year" name="year" value="<?= old('year') ?>" required>
+                            <span id="year_error" class="error"></span>
                             <p><?= error('year') ?></p>
                         </div>
                     </div>
@@ -56,6 +62,7 @@ catch (PDOException $e) {
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
                             <input type="text" id="isbn" name="isbn" value="<?= old('isbn') ?>" required>
+                            <span id="isbn_error" class="error"></span>
                             <p><?= error('isbn') ?></p>
                         </div>
                     </div>
@@ -67,6 +74,7 @@ catch (PDOException $e) {
                                     <option value="<?= h($publisher->id) ?>" <?= chosen('publisher_id', $publisher->id) ? "selected" : "" ?>>
                                         <?= h($publisher->name) ?>
                                     </option>
+                                    <span id="publishers_error" class="error"></span>
                                 <?php } ?>
                             </select>
                             <p><?= error('publisher_id') ?></p>
@@ -74,6 +82,7 @@ catch (PDOException $e) {
                     </div>
                     <div class="input">
                         <label class="special" for="description">Description:</label>
+                        <span id="description_error" class="error"></span>
                         <div>
                             <textarea id="description" name="description" required><?= old('description') ?></textarea>
                             <p><?= error('description') ?></p>
@@ -91,6 +100,7 @@ catch (PDOException $e) {
                                         <?= chosen('format_ids', $format->id) ? "checked" : "" ?>
                                         >
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
+                                    <span id="format_ids_error" class="error"></span>
                                 </div>
                             <?php } ?>
                         </div>
@@ -100,11 +110,12 @@ catch (PDOException $e) {
                         <label class="special" for="cover">Image (required):</label>
                         <div>
                             <input type="file" id="cover" name="cover" accept="image/*">
+                            <span id="image_error" class="error"></span>
                             <p><?= error('cover') ?></p>
                         </div>
                     </div>
                     <div class="input">
-                        <button  class="button" type="submit">Store Book</button>
+                        <button  class="button" id="submit_btn" type="submit">Store Book</button>
                         <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
                 </form>
