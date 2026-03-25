@@ -1,6 +1,8 @@
 let applyBtn = document.getElementById('apply_filters');
 let clearBtn = document.getElementById('clear_filters');
+
 let cards = document.querySelectorAll('.card');
+let cardsContainer = document.getElementById("game_cards")
 
 let form = document.getElementById('filters');
 
@@ -25,6 +27,9 @@ function applyFilters() {
     }
     let cardsArray = Array.from(cards);
     const sorted = sortCards(cardsArray, filters.sortBy);
+    sorted.forEach(card => {
+        cardsContainer.appendChild(card);
+    });
 }
 
 function sortCards(cards, sortBy) {
@@ -61,7 +66,18 @@ function cardMatches(crd, fltrs) {
 }
 
 function clearFilters() {
-    console.log("clearing filters");
+    // console.log("clearing filters");
+    form.reset();
+
+    cards.forEach(function (card) {
+        card.classList.remove('hidden');
+    });
+
+    let cardsArray = Array.from(cards);
+    const sorted = sortCards(cardsArray, "title");
+    sorted.forEach(card => {
+        cardsContainer.appendChild(card);
+    });
 }
 
 function getFilters() {
