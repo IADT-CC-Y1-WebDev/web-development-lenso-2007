@@ -49,7 +49,8 @@ catch (PDOException $e) {
                 <h1>Edit Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_update.php" method="POST" enctype="multipart/form-data">
+                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data">
+                    <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
@@ -57,30 +58,38 @@ catch (PDOException $e) {
                         <label class="special" for="title">Title:</label>
                         <div>
                             <input type="text" id="title" name="title" value="<?= old('title', $book->title) ?>" required>
+                            <span id="title_error" class="error"></span>
                             <p><?= error('title') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="author">Author:</label>
                         <div>
                             <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
+                            <span id="author_error" class="error"></span>
                             <p><?= error('author') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
-                        <label class="special" for="">Year:</label>
+                        <label class="special" for="year">Year:</label>
                         <div>
                             <input type="number" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
+                            <span id="year_error" class="error"></span>
                             <p><?= error('year') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
                             <input type="text" id="isbn" name="isbn" value="<?= old('isbn', $book->isbn) ?>" required>
+                            <span id="isbn_error" class="error"></span>
                             <p><?= error('isbn') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="publisher_id">Publisher:</label>
                         <div>
@@ -91,16 +100,20 @@ catch (PDOException $e) {
                                     </option>
                                 <?php } ?>
                             </select>
+                            <span id="publisher_id_error" class="error"></span>
                             <p><?= error('publisher_id') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="description">Description:</label>
                         <div>
                             <textarea id="description" name="description" required><?= old('description', $book->description) ?></textarea>
+                            <span id="description_error" class="error"></span>
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special">Formats:</label>
                         <div>
@@ -115,29 +128,32 @@ catch (PDOException $e) {
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>
                             <?php } ?>
+                            <span id="format_ids_error" class="error"></span>
+                            <p><?= error('format_ids') ?></p>
                         </div>
-                        <p><?= error('format_ids') ?></p>
                     </div>
+
                     <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
-                        <label class="special" for="image">Image (optional):</label>
+                        <label class="special" for="cover">Image (optional):</label>
                         <div>
-                            <input type="file" id="image" name="cover_filename" accept="image/*">
+                            <input type="file" id="cover" name="cover_filename" accept="image/*">
+                            <span id="cover_error" class="error"></span>
                             <p><?= error('image') ?></p>
                         </div>
                     </div>
+                    
                     <div class="input">
-                        <button class="button" type="submit">Update Book</button>
+                        <button class="button" id="submit_btn" type="submit">Update Book</button>
                         <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
                 </form>
             </div>
         </div>
+        <script src="edit_validation.js"></script>
     </body>
 </html>
 <?php
-// Clear form data after displaying
 clearFormData();
-// Clear errors after displaying
 clearFormErrors();
 ?>

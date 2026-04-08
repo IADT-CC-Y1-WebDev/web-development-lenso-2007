@@ -30,7 +30,7 @@ catch (PDOException $e) {
                 <h1>Create Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
+                <form id="book_form" action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
 
                     <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
 
@@ -42,6 +42,7 @@ catch (PDOException $e) {
                             <p><?= error('title') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="author">Author:</label>
                         <div>
@@ -50,6 +51,7 @@ catch (PDOException $e) {
                             <p><?= error('author') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="year">Release Year:</label>
                         <div>
@@ -58,6 +60,7 @@ catch (PDOException $e) {
                             <p><?= error('year') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
@@ -66,6 +69,7 @@ catch (PDOException $e) {
                             <p><?= error('isbn') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="publisher_id">Publishers:</label>
                         <div>
@@ -74,20 +78,22 @@ catch (PDOException $e) {
                                     <option value="<?= h($publisher->id) ?>" <?= chosen('publisher_id', $publisher->id) ? "selected" : "" ?>>
                                         <?= h($publisher->name) ?>
                                     </option>
-                                    <span id="publishers_error" class="error"></span>
                                 <?php } ?>
                             </select>
+                            <span id="publishers_error" class="error"></span>
                             <p><?= error('publisher_id') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special" for="description">Description:</label>
-                        <span id="description_error" class="error"></span>
                         <div>
                             <textarea id="description" name="description" required><?= old('description') ?></textarea>
+                            <span id="description_error" class="error"></span>
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
                         <label class="special">Formats:</label>
                         <div>
@@ -97,15 +103,15 @@ catch (PDOException $e) {
                                         id="format_<?= h($format->id) ?>" 
                                         name="format_ids[]" 
                                         value="<?= h($format->id) ?>"
-                                        <?= chosen('format_ids', $format->id) ? "checked" : "" ?>
-                                        >
+                                        <?= chosen('format_ids', $format->id) ? "checked" : "" ?>>
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
-                                    <span id="format_ids_error" class="error"></span>
                                 </div>
                             <?php } ?>
+                            <span id="format_ids_error" class="error"></span>
+                            <p><?= error('format_ids') ?></p>
                         </div>
-                        <p><?= error('format_ids') ?></p>
                     </div>
+
                     <div class="input">
                         <label class="special" for="cover">Image (required):</label>
                         <div>
@@ -114,17 +120,19 @@ catch (PDOException $e) {
                             <p><?= error('cover') ?></p>
                         </div>
                     </div>
+
                     <div class="input">
-                        <button  class="button" id="submit_btn" type="submit">Store Book</button>
+                        <button class="button" id="submit_btn" type="submit">Store Book</button>
                         <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
+
                 </form>
             </div>
         </div>
+        <script src="create_validation.js"></script>
     </body>
 </html>
 <?php
 clearFormData();
-
 clearFormErrors();
 ?>

@@ -6,19 +6,19 @@ let titleInput = document.getElementById('title');
 let authorInput = document.getElementById('author');
 let yearInput = document.getElementById('year');
 let isbnInput = document.getElementById('isbn');
-let publisherInput = document.getElementById('publisher_id');
+let publisherIdInput = document.getElementById('publisher_id');
 let descriptionInput = document.getElementById('description');
-let formatInputs = document.getElementsByName('format_ids[]');
-let imageInput = document.getElementById('cover');
+let formatIdsInput = document.getElementsByName('format_ids[]');
+let coverInput = document.getElementById('cover');
 
 let titleError = document.getElementById('title_error');
 let authorError = document.getElementById('author_error');
 let yearError = document.getElementById('year_error');
 let isbnError = document.getElementById('isbn_error');
-let publisherError = document.getElementById('publishers_error');
+let publisherIdError = document.getElementById('publisher_id_error');
 let descriptionError = document.getElementById('description_error');
-let formatError = document.getElementById('format_ids_error');
-let imageError = document.getElementById('image_error');
+let formatIdsError = document.getElementById('format_ids_error');
+let coverError = document.getElementById('cover_error');
 
 let errors = {};
 
@@ -51,10 +51,10 @@ function showFieldErrors() {
     authorError.innerHTML = errors.author || '';
     yearError.innerHTML = errors.year || '';
     isbnError.innerHTML = errors.isbn || '';
-    publisherError.innerHTML = errors.publisher_id || '';
+    publisherIdError.innerHTML = errors.publisher_id || '';
     descriptionError.innerHTML = errors.description || '';
-    formatError.innerHTML = errors.format_ids || '';
-    imageError.innerHTML = errors.image || '';
+    formatIdsError.innerHTML = errors.format_ids || '';
+    coverError.innerHTML = errors.cover || '';
 }
 
 function isRequired(value) {
@@ -71,7 +71,7 @@ function isMaxLength(value, max) {
 
 function onSubmitForm(evt) {
     evt.preventDefault();
-
+    
     errors = {};
 
     let titleMin = titleInput.dataset.minlength || 3;
@@ -82,25 +82,25 @@ function onSubmitForm(evt) {
         addError('title', 'Title is required');
     } else if(!isMinLength(titleInput.value, titleMin)) {
         addError('title', 'Title must be at least '+ titleMin + ' characters.');
-    } else if(!isMaxLength(titleInput.value, 255)) {
+    } else if(!isMaxLength(titleInput.value, titleMax)) {
         addError('title', 'Title must be less than ' + titleMax + ' characters.');
     }
 
-    if (!isRequired(authorInput.value)) {
+    if(!isRequired(authorInput.value)){
         addError('author', 'Author is required');
     }
 
-    if (!isRequired(yearInput.value)) {
+    if(!isRequired(yearInput.value)){
         addError('year', 'Year is required');
     }
 
-    if (!isRequired(isbnInput.value)) {
+    if(!isRequired(isbnInput.value)){
         addError('isbn', 'ISBN is required');
-    } else if (!isMinLength(isbnInput.value, 13) || !isMaxLength(isbnInput.value, 13)) {
-        addError('isbn', 'ISBN must be 13 numbers');
+    } else if(!isMinLength(isbnInput.value, 13) || !isMaxLength(isbnInput.value, 13)){
+        addError('isbn', 'ISBN must be exactly 13 characters');
     }
 
-    if (!isRequired(publisherInput.value)) {
+    if(!isRequired(publisherIdInput.value)){
         addError('publisher_id', 'Publisher is required');
     }
 
@@ -111,26 +111,20 @@ function onSubmitForm(evt) {
     }
 
     let formatSelected = false;
-
-    for (let i = 0; i < formatInputs.length; i++) {
-        if (formatInputs[i].checked) {
+    for(let i = 0; i < formatIdsInput.length; i++){
+        if(formatIdsInput[i].checked){
             formatSelected = true;
             break;
         }
     }
-
-    if (!formatSelected) {
+    if(!formatSelected){
         addError('format_ids', 'Select at least one format');
-    }
-
-    if (imageInput.files.length === 0) {
-        addError('image', 'Image is required');
     }
 
     showFieldErrors();
     showErrorSummaryTop();
 
-    if (Object.keys(errors).length === 0) {
+    if(Object.keys(errors).length === 0){
         bookForm.submit();
         alert('form submitted');
     }
