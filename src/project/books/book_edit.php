@@ -20,7 +20,7 @@ try {
         throw new Exception("Book not found.");
     }
 
-    $bookFormats = Format::findById($book->id);
+    $bookFormats = Format::findByBookId($book->id);
     $bookFormatsIds = [];
     foreach ($bookFormats as $format) {
         $bookFormatsIds[] = $format->id;
@@ -38,7 +38,9 @@ catch (PDOException $e) {
 <html lang="en">
     <head>
         <?php include 'php/inc/head_content.php'; ?>
+
         <title>Edit Book</title>
+
     </head>
     <body>
         <div class="container">
@@ -50,14 +52,17 @@ catch (PDOException $e) {
             </div>
             <div class="width-12">
                 <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data">
+
                     <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
+                    
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
+
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
-                            <input type="text" id="title" name="title" value="<?= old('title', $book->title) ?>" required>
+                            <input type="text" id="title" name="title" data-minlength="3" data-maxlength="255" value="<?= old('title', $book->title) ?>" required>
                             <span id="title_error" class="error"></span>
                             <p><?= error('title') ?></p>
                         </div>
@@ -108,7 +113,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="description">Description:</label>
                         <div>
-                            <textarea id="description" name="description" required><?= old('description', $book->description) ?></textarea>
+                            <textarea id="description" name="description" data-minlength="10" required><?= old('description', $book->description) ?></textarea>
                             <span id="description_error" class="error"></span>
                             <p><?= error('description') ?></p>
                         </div>
@@ -119,12 +124,7 @@ catch (PDOException $e) {
                         <div>
                             <?php foreach ($formats as $format) { ?>
                                 <div>
-                                    <input type="checkbox" 
-                                        id="format_<?= h($format->id) ?>" 
-                                        name="format_ids[]" 
-                                        value="<?= h($format->id) ?>"
-                                        <?= chosen('format_ids', $format->id, $bookFormatsIds) ? "checked" : "" ?>
-                                    >
+                                    <input type="checkbox" id="format_<?= h($format->id) ?>" name="format_ids[]" value="<?= h($format->id) ?>"<?= chosen('format_ids', $format->id, $bookFormatsIds) ? "checked" : "" ?>>
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>
                             <?php } ?>
@@ -137,9 +137,9 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="cover">Image (optional):</label>
                         <div>
-                            <input type="file" id="cover" name="cover_filename" accept="image/*">
-                            <span id="cover_error" class="error"></span>
-                            <p><?= error('image') ?></p>
+                            <input type="file" id="cover" name="cover" accept="image/*">
+                            <span id="image_error" class="error"></span>
+                            <p><?= error('cover') ?></p>
                         </div>
                     </div>
                     
@@ -150,7 +150,7 @@ catch (PDOException $e) {
                 </form>
             </div>
         </div>
-        <script src="edit_validation.js"></script>
+        <script src="js/validation.js"></script>
     </body>
 </html>
 <?php

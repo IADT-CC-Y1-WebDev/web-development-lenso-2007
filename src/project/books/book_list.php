@@ -63,11 +63,18 @@ catch (PDOException $e) {
                 <p>No games found.</p>
             <?php } else { ?>
                 <div class="width-12 cards" id="book_cards">
-                    <?php foreach ($books as $book) { ?>
+                    <?php foreach ($books as $book) { 
+                        $bookFormats = Format::findByBookId($book->id);
+                        $formatIds = [];
+                        foreach ($bookFormats as $f) {
+                            $formatIds[] = $f->id;
+                        }
+                        $formatIdStr = implode(" ", $formatIds);
+                    ?>
                         <div class="card"
                             data-title="<?= h($book->title) ?>"
                             data-publisher="<?= h($book->publisher_id) ?>"
-                            data-format="<?= h($book->id) ?>">
+                            data-format="<?= h($formatIdStr) ?>">
                             <div class="top-content">
                                 <h2>Title: <?= h($book->title) ?></h2>
                                 <p>Release Year: <?= h($book->year) ?></p>
@@ -85,6 +92,6 @@ catch (PDOException $e) {
                 </div>
             <?php } ?>
         </div>
-        <script src="book_filters.js"></script>
+        <script src="js/book_filters.js"></script>
     </body>
 </html>

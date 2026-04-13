@@ -31,7 +31,23 @@ class Format
         return $formats;
     }
 
-    public static function findById($bookId)
+    public static function findById($id)
+    {
+        $db = DB::getInstance()->getConnection();
+ 
+        $stmt = $db->prepare("SELECT * FROM formats WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+ 
+        $format = null;
+        $row = $stmt->fetch();
+        if ($row) {
+            $format = new Format($row);
+        }
+ 
+        return $format;
+    }
+
+    public static function findByBookId($bookId)
     {
         $db = DB::getInstance()->getConnection();
  

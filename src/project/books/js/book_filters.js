@@ -29,7 +29,7 @@ function cardMatches(card, filters) {
 
     let matchTitle = filters.titleFilter === "" || title.includes(filters.titleFilter);
     let matchPublisher = filters.publisherFilter === "" || publisher === filters.publisherFilter;
-    let matchFormat = filters.formatFilter === "" || format === filters.formatFilter;
+    let matchFormat = filters.formatFilter === "" || format.includes(filters.formatFilter);
 
     return matchTitle && matchPublisher && matchFormat;
 }

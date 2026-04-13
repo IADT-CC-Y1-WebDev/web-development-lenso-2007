@@ -37,7 +37,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="title">Title:</label>
                         <div>
-                            <input type="text" id="title" name="title" value="<?= old('title') ?>" required>
+                            <input type="text" id="title" name="title" data-minlength="3" data-maxlength="255" value="<?= old('title') ?>" required>
                             <span id="title_error" class="error"></span>
                             <p><?= error('title') ?></p>
                         </div>
@@ -88,7 +88,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="description">Description:</label>
                         <div>
-                            <textarea id="description" name="description" required><?= old('description') ?></textarea>
+                            <textarea id="description" name="description" data-minlength="10" required><?= old('description') ?></textarea>
                             <span id="description_error" class="error"></span>
                             <p><?= error('description') ?></p>
                         </div>
@@ -99,11 +99,7 @@ catch (PDOException $e) {
                         <div>
                             <?php foreach ($formats as $format) { ?>
                                 <div>
-                                    <input type="checkbox" 
-                                        id="format_<?= h($format->id) ?>" 
-                                        name="format_ids[]" 
-                                        value="<?= h($format->id) ?>"
-                                        <?= chosen('format_ids', $format->id) ? "checked" : "" ?>>
+                                    <input type="checkbox" id="format_<?= h($format->id) ?>" name="format_ids[]" value="<?= h($format->id) ?>" <?= chosen('format_ids', $format->id) ? "checked" : "" ?>>
                                     <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
                                 </div>
                             <?php } ?>
@@ -129,7 +125,7 @@ catch (PDOException $e) {
                 </form>
             </div>
         </div>
-        <script src="create_validation.js"></script>
+        <script src="js/validation.js"></script>
     </body>
 </html>
 <?php
