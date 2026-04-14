@@ -21,6 +21,9 @@ catch (PDOException $e) {
         <div class="container">
             <div class="width-12 header">
                 <?php require 'php/inc/flash_message.php'; ?>
+                <div class="bookList title">
+                    <h1>The Book Library</h1>
+                </div>  
                 <div class="button">
                     <a href="book_create.php">Add New Book</a>
                 </div>
@@ -51,6 +54,14 @@ catch (PDOException $e) {
                             </select>
                         </div>
                         <div>
+                            <label class="filter-label" for="sort_by">Sort:</label>
+                            <select id="sort_by" name="sort_by">
+                                <option value="title_asc">Title A-Z</option>
+                                <option value="year_desc">Year (newest first)</option>
+                                <option value="year_asc">Year (oldest first)</option>
+                            </select>
+                        </div>
+                        <div>
                             <button type="button" id="apply_filters">Apply Filters</button>
                             <button type="button" id="clear_filters">Clear Filters</button>
                         </div>
@@ -74,9 +85,10 @@ catch (PDOException $e) {
                         <div class="card"
                             data-title="<?= h($book->title) ?>"
                             data-publisher="<?= h($book->publisher_id) ?>"
-                            data-format="<?= h($formatIdStr) ?>">
+                            data-format="<?= h($formatIdStr) ?>"
+                            data-year="<?= h($book->year) ?>">
                             <div class="top-content">
-                                <h2>Title: <?= h($book->title) ?></h2>
+                                <h2><?= h($book->title) ?></h2>
                                 <p>Release Year: <?= h($book->year) ?></p>
                             </div>
                             <div class="bottom-content">
@@ -84,7 +96,7 @@ catch (PDOException $e) {
                                 <div class="actions">
                                     <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
                                     <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
-                                    <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                                    <a href="book_delete.php?id=<?= h($book->id) ?>" onclick="return confirm('are you sure you want to delete')">Delete</a>
                                 </div>
                             </div>
                         </div>
