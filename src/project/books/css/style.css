@@ -3,7 +3,8 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.5em;
-	background-color: #fff;
+	background-color: #ededed;
+	color: #1f2937;
 }
 
 .cards {
@@ -16,7 +17,7 @@ body {
 	background-color: #f4f4f4;
 	padding: 16px;
 	border-radius: 7px;
-	border: 1px solid #bcbcbc;
+	border: 1px solid #d6d9de;
 	width: 285px;
 	display: flex;
 	flex-direction: column;
@@ -33,11 +34,12 @@ body {
 	font-family: "IBM Plex Serif";
 	margin-bottom: 12px;
 	font-weight: 300;
-	color: #016040;
+	color: #1f2937;
 }
 
 .card p {
 	margin-bottom: 10px;
+	color: #4b5563;
 }
 
 .card .actions {
@@ -48,28 +50,30 @@ body {
 
 .card .actions a {
 	font-weight: 600;
-	color: #b0acfa;
+	color: #2563eb;
 	font-size: 13px;
 	text-transform: uppercase;
 }
 
 .card .actions a:hover {
-	color: #2c22df;
+	color: #1d4ed8;
 }
 
 .card img {
 	width: 100%;
 	margin-bottom: 10px;
-	object-fit: cover;
-	border: 1px solid #7c75f1;
+	object-fit: fill;
+	border: 1px solid #d6d9de;
 	height: 340px;
 }
 
 .filters {
-	background-color: #f2f2f2;
+	background-color: #f4f4f4;
 	padding: 10px;
 	display: flex;
 	justify-content: flex-end;
+	border-radius: 7px;
+	border: 1px solid #d6d9de;
 }
 
 .filters form {
@@ -97,10 +101,10 @@ body {
 
 .filters form button {
 	font-size: 13px;
-	background-color: #084108;
+	background-color: #2563eb;
 	padding: 5px 10px;
-	color: #ececec;
-	border: 1px solid #4bff3c;
+	color: #fff;
+	border: 1px solid #1d4ed8;
 	border-radius: 5px;
 }
 
@@ -112,10 +116,10 @@ body {
 
 .button {
 	font-size: 13px;
-	background-color: #123991;
+	background-color: #2563eb;
 	padding: 5px 10px;
-	color: #ececec;
-	border: 1px solid #4bff3c;
+	color: #fff;
+	border: 1px solid #1d4ed8;
 	border-radius: 5px;
 }
 
@@ -123,7 +127,7 @@ body {
 	background-color: #f4f4f4;
 	padding: 16px;
 	border-radius: 7px;
-	border: 1px solid #bcbcbc;
+	border: 1px solid #d6d9de;
 	width: 800px;
 	display: flex;
 	gap: 20px;
@@ -137,11 +141,12 @@ body {
 	font-family: "IBM Plex Serif";
 	margin-bottom: 12px;
 	font-weight: 300;
-	color: #016040;
+	color: #1f2937;
 }
 
 .hCard p {
 	margin-bottom: 10px;
+	color: #4b5563;
 }
 
 .hCard .actions {
@@ -152,20 +157,20 @@ body {
 
 .hCard .actions a {
 	font-weight: 600;
-	color: #b0acfa;
+	color: #2563eb;
 	font-size: 13px;
 	text-transform: uppercase;
 }
 
 .hCard .actions a:hover {
-	color: #2c22df;
+	color: #1d4ed8;
 }
 
 .hCard img {
 	width: 340px;
 	margin-bottom: 10px;
 	object-fit: cover;
-	border: 1px solid #7c75f1;
+	border: 1px solid #d6d9de;
 	height: 340px;
 }
 
@@ -206,4 +211,17 @@ form {
 .error {
     color: #b00020;
     font-size: 0.85rem;
+}
+
+.width-12.indexTop {
+	display: flex;
+	justify-content: center;
+}
+
+.cards.index {
+	justify-content: center;
+}
+
+.bookList.title {
+	color: #1f2937;
 }

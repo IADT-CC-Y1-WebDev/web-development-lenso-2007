@@ -46,7 +46,7 @@ catch (PDOException $e) {
  
                         <div class="actions">
                             <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a> /
-                            <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a> /
+                            <a href="book_delete.php?id=<?= h($book->id) ?>" onclick="return confirm('are you sure you want to delete')">Delete</a> /
                             <a href="book_list.php">Back</a>
                         </div>
                     </div>
