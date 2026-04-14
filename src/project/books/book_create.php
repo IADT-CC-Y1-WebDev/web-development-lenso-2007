@@ -55,7 +55,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="number" id="year" name="year" value="<?= old('year') ?>" required>
+                            <input type="number" id="year" name="year" min="1900" max="2099" value="<?= old('year') ?>" required>
                             <span id="year_error" class="error"></span>
                             <p><?= error('year') ?></p>
                         </div>
@@ -64,7 +64,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
-                            <input type="text" id="isbn" name="isbn" value="<?= old('isbn') ?>" required>
+                            <input type="text" id="isbn" name="isbn" data-minlength="13" data-maxlength="13" value="<?= old('isbn') ?>" required>
                             <span id="isbn_error" class="error"></span>
                             <p><?= error('isbn') ?></p>
                         </div>
@@ -88,7 +88,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="description">Description:</label>
                         <div>
-                            <textarea id="description" name="description" data-minlength="10" required><?= old('description') ?></textarea>
+                            <textarea id="description" name="description" data-minlength="10" data-maxlength="5000" required><?= old('description') ?></textarea>
                             <span id="description_error" class="error"></span>
                             <p><?= error('description') ?></p>
                         </div>

@@ -69,6 +69,15 @@ function isMaxLength(value, max) {
     return String(value).trim().length <= max;
 }
 
+function isOnlyNumbers(value) {
+    return /^[0-9]+$/.test(String(value).trim());
+}
+
+function isInRange(value, min, max) {
+    num = Number(value);
+    return num >= min && num <= max;
+}
+
 function onSubmitForm(evt) {
     evt.preventDefault();
 
@@ -76,29 +85,44 @@ function onSubmitForm(evt) {
 
     let titleMin = titleInput.dataset.minlength || 3;
     let titleMax = titleInput.dataset.maxlength || 255;
+    let authorMin = authorInput.dataset.minlength || 3;
+    let authorMax = authorInput.dataset.maxlength || 255;
     let descMin = descriptionInput.dataset.minlength || 10;
+    let descMax = descriptionInput.dataset.maxlength || 5000;
+    let isbnMin = isbnInput.dataset.minlength || 13;
+    let isbnMax = isbnInput.dataset.maxlength || 13;
+    let yearMin = yearInput.dataset.min || 1900;
+    let yearMax = yearInput.dataset.max || 2099;   
 
     if(!isRequired(titleInput.value)){
         addError('title', 'Title is required');
     } else if(!isMinLength(titleInput.value, titleMin)) {
-        addError('title', 'Title must be at least '+ titleMin + ' characters.');
-    } else if(!isMaxLength(titleInput.value, 255)) {
-        addError('title', 'Title must be less than ' + titleMax + ' characters.');
+        addError('title', `Title must be at least ${titleMin} characters.`);
+    } else if(!isMaxLength(titleInput.value, titleMax)) {
+        addError('title', `Title must be less than ${titleMax} characters.`);
     }
 
     if (!isRequired(authorInput.value)) {
         addError('author', 'Author is required');
+    } else if(!isMinLength(authorInput.value, authorMin)){
+        addError('author', `Author input must be at least ${descMin} characters.`);
+    } else if(!isMaxLength(authorInput.value, authorMax)) {
+        addError('author', `Author input must be less than ${descMin} characters.`);
     }
 
     if (!isRequired(yearInput.value)) {
         addError('year', 'Year is required');
-    }
+    } else if (!isInRange(yearInput.value, yearMin, yearMax)) {
+    addError('year', `Year must be between ${yearMin} and ${yearMax}`);
+}
 
     if (!isRequired(isbnInput.value)) {
         addError('isbn', 'ISBN is required');
-    } else if (!isMinLength(isbnInput.value, 13) || !isMaxLength(isbnInput.value, 13)) {
-        addError('isbn', 'ISBN must be 13 numbers');
-    }
+    } else if (!isMinLength(isbnInput.value, isbnMin) || !isMaxLength(isbnInput.value, isbnMax)) {
+        addError('isbn', `ISBN must be ${isbnMax} numbers`);
+    } else if (!isOnlyNumbers(isbnInput.value)) {
+        addError('isbn', 'ISBN must contain only numbers');
+    } 
 
     if (!isRequired(publisherInput.value)) {
         addError('publisher_id', 'Publisher is required');
@@ -108,6 +132,8 @@ function onSubmitForm(evt) {
         addError('description', 'Description is required');
     } else if(!isMinLength(descriptionInput.value, descMin)){
         addError('description', `Description must be at least ${descMin} characters.`);
+    } else if(!isMaxLength(descriptionInput.value, descMax)) {
+        addError('description', `Description must be less than ${descMin} characters.`);
     }
 
     let formatSelected = false;
@@ -123,7 +149,10 @@ function onSubmitForm(evt) {
         addError('format_ids', 'Select at least one format');
     }
 
-    if (imageInput.files.length === 0) {
+
+    let isEditForm = bookForm.action.includes('book_update.php');
+
+    if (!isEditForm && imageInput.files.length === 0) {
         addError('image', 'Image is required');
     }
 

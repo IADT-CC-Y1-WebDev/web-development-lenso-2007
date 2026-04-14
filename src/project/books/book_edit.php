@@ -89,7 +89,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
-                            <input type="text" id="isbn" name="isbn" value="<?= old('isbn', $book->isbn) ?>" required>
+                            <input type="text" id="isbn" name="isbn" data-minlength="13" data-maxlength="13" value="<?= old('isbn', $book->isbn) ?>" required>
                             <span id="isbn_error" class="error"></span>
                             <p><?= error('isbn') ?></p>
                         </div>
@@ -105,7 +105,7 @@ catch (PDOException $e) {
                                     </option>
                                 <?php } ?>
                             </select>
-                            <span id="publisher_id_error" class="error"></span>
+                            <span id="publishers_error" class="error"></span>
                             <p><?= error('publisher_id') ?></p>
                         </div>
                     </div>
