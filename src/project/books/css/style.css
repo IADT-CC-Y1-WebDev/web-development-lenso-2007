@@ -115,12 +115,14 @@ body {
 }
 
 .button {
+	display: flex;
 	font-size: 13px;
 	background-color: #2563eb;
 	padding: 5px 10px;
 	color: #fff;
 	border: 1px solid #1d4ed8;
 	border-radius: 5px;
+	gap: 10px;
 }
 
 .hCard {
@@ -224,4 +226,20 @@ form {
 
 .bookList.title {
 	color: #1f2937;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    background: white;
+    margin: 20% auto;
+    padding: 20px;
+    width: 300px;
 }

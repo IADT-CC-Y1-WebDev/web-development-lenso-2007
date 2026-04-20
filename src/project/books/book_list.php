@@ -26,6 +26,8 @@ catch (PDOException $e) {
                 </div>  
                 <div class="button">
                     <a href="book_create.php">Add New Book</a>
+                    <a href="publisher_create.php">Add New Publisher</a>
+                    <a href="format_create.php">Add New Format</a>
                 </div>
             </div>
             <?php if (!empty($books)) { ?>
@@ -95,8 +97,27 @@ catch (PDOException $e) {
                                 <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
                                 <div class="actions">
                                     <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
-                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
-                                    <a href="book_delete.php?id=<?= h($book->id) ?>" onclick="return confirm('are you sure you want to delete')">Delete</a>
+                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/
+                                     
+                                    <button class="delete-btn" onclick="document.getElementById('modal-<?= $book->id ?>').style.display='block'">Delete</button>
+
+                                    <div id="modal-<?= $book->id ?>" class="modal">
+                                        <span onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="close">&times;</span>
+
+                                        <form class="modal-content" action="book_delete.php" method="GET">
+                                            <input type="hidden" name="id" value="<?= $book->id ?>">
+
+                                            <div class="container">
+                                                <h1>Delete Book</h1>
+                                                <p>Are you sure you want to delete this book?</p>
+
+                                                <div class="clearfix">
+                                                    <button type="button" onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="cancelbtn">Cancel</button>
+                                                    <button type="submit" class="deletebtn">Delete</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -104,6 +125,7 @@ catch (PDOException $e) {
                 </div>
             <?php } ?>
         </div>
+        <script src="js/modal_button.js"></script>
         <script src="js/book_filters.js"></script>
     </body>
 </html>

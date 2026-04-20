@@ -46,7 +46,30 @@ catch (PDOException $e) {
  
                         <div class="actions">
                             <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a> /
-                            <a href="book_delete.php?id=<?= h($book->id) ?>" onclick="return confirm('are you sure you want to delete')">Delete</a> /
+                            <button onclick="document.getElementById('modal-<?= $book->id ?>').style.display='block'">Delete</button>
+
+                            <div id="modal-<?= $book->id ?>" class="modal">
+                                <span onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="close">&times;</span>
+
+                                <form class="modal-content" action="book_delete.php" method="GET">
+                                    <input type="hidden" name="id" value="<?= $book->id ?>">
+
+                                    <div class="container">
+                                        <h1>Delete Book</h1>
+                                        <p>Are you sure you want to delete this book?</p>
+
+                                        <div class="clearfix">
+                                            <button type="button"
+                                                onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'"
+                                                class="cancelbtn">
+                                                Cancel
+                                            </button>
+
+                                            <button type="submit" class="deletebtn">Delete</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <a href="book_list.php">Back</a>
                         </div>
                     </div>
@@ -63,5 +86,6 @@ catch (PDOException $e) {
                 </div>
             </div>
         </div>
+        <script src="js/modal_button.js"></script>
     </body>
 </html>
