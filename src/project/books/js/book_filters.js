@@ -78,4 +78,10 @@ function applyFilters() {
 function clearFilters() {
     form.reset();
     cards.forEach(card => card.classList.remove('hidden'));
+    
+    let cardsArray = Array.from(cards);
+    const sorted = sortCards(cardsArray, "title");
+    sorted.forEach(card => {
+        cardsContainer.appendChild(card);
+    });
 }
