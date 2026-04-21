@@ -15,16 +15,16 @@ catch (PDOException $e) {
 <html lang="en">
     <head>
         <?php include 'php/inc/head_content.php'; ?>
-        <title>Publishers</title>
+        <title>Formats</title>
     </head>
     <body>
         <div class="container">
             <div class="width-12 header">
                 <?php require 'php/inc/flash_message.php'; ?>
-                <h1>Publishers</h1>
+                <h1>Formats</h1>
                 <div class="buttonHolder">
                     <div class="button">
-                        <a href="publisher_create.php">Add New Publisher</a>
+                        <a href="format_create.php">Add New Format</a>
                     </div>
                     <div class="button">
                         <a href="book_list.php">Back to books</a>
@@ -32,33 +32,33 @@ catch (PDOException $e) {
                 </div> 
             </div>
         <div class="container">
-            <?php if (empty($publishers)) { ?>
-                <p>No publishers found.</p>
+            <?php if (empty($formats)) { ?>
+                <p>No formats found.</p>
             <?php } else { ?>
                 <div class="width-12 cards" id="book_cards">
-                    <?php foreach ($publishers as $publisher) { ?>
-                        <div class="card" data-name="<?= h($publisher->name) ?>">
+                    <?php foreach ($formats as $format) { ?>
+                        <div class="card" data-name="<?= h($format->name) ?>">
                             <div class="top-content">
-                                <h2><?= h($publisher->name) ?></h2>
+                                <h2><?= h($format->name) ?></h2>
                             </div>
                             <div class="bottom-content">
                                 <div class="actions">
                                      
-                                    <a href="publisher_view.php?id=<?= h($publisher->id) ?>">View all Books</a>/
-                                    <button class="delete-btn" data-modal="modal-<?= $publisher->id ?>">Delete</button>
+                                    <a href="format_view.php?id=<?= h($format->id) ?>">View all Books</a>/
+                                    <button class="delete-btn" data-modal="modal-<?= $format->id ?>">Delete</button>
 
-                                    <div data-modal="modal-<?= $publisher->id ?>" id="modal-<?= $publisher->id ?>" class="modal" >
+                                    <div data-modal="modal-<?= $format->id ?>" id="modal-<?= $format->id ?>" class="modal" >
                                         <span class="close">&times;</span>
 
-                                        <form class="modal-content" action="publisher_delete.php" method="GET">
-                                            <input type="hidden" name="id" value="<?= $publisher->id ?>">
+                                        <form class="modal-content" action="format_delete.php" method="GET">
+                                            <input type="hidden" name="id" value="<?= $format->id ?>">
 
                                             <div class="container">
                                                 <h1>Delete Book</h1>
-                                                <p>Are you sure you want to delete "<?= h($publisher->name) ?>"?</p>
+                                                <p>Are you sure you want to delete "<?= h($format->name) ?>"?</p>
 
                                                 <div class="clearfix">
-                                                    <button type="button" class="cancelbtn" data-modal="modal-<?= $publisher->id ?>">Cancel</button>
+                                                    <button type="button" class="cancelbtn" data-modal="modal-<?= $format->id ?>">Cancel</button>
                                                     <button type="submit" class="deletebtn">Delete</button>
                                                 </div>
                                             </div>

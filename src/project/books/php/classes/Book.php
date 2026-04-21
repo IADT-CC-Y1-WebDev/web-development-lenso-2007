@@ -111,6 +111,21 @@ class Book
         return $books;
     }
 
+    public static function findByFormatId($formatId)
+    {
+        $db = DB::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT b.* FROM books b LEFT JOIN book_format bf ON bf.book_id = b.id LEFT JOIN formats f ON bf.format_id = f.id WHERE f.id = :formatId");
+        $stmt->execute(['formatId' => $formatId]);
+ 
+        $books = [];
+        while ($row = $stmt->fetch()) {
+            $books[] = new Book($row);
+        }
+ 
+        return $books;
+    }
+
     // =========================================================================
     // Exercise 10: Complete Active Record
     // =========================================================================

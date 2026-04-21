@@ -24,10 +24,16 @@ catch (PDOException $e) {
                 <div class="bookList title">
                     <h1>The Book Library</h1>
                 </div>  
-                <div class="button">
-                    <a href="book_create.php">Add New Book</a>
-                    <a href="publisher_create.php">Add New Publisher</a>
-                    <a href="format_create.php">Add New Format</a>
+                <div class="buttonHolder">
+                    <div class="button">
+                        <a href="book_create.php">Add New Book</a>
+                    </div>
+                    <div class="button">
+                        <a href="publisher_list.php">View all Publishers</a>
+                    </div>
+                    <div class="button">
+                        <a href="format_list.php">View all Formats</a>
+                    </div>
                 </div>
             </div>
             <?php if (!empty($books)) { ?>
@@ -97,22 +103,22 @@ catch (PDOException $e) {
                                 <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
                                 <div class="actions">
                                     <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
-                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/
+                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/            
                                      
-                                    <button class="delete-btn" onclick="document.getElementById('modal-<?= $book->id ?>').style.display='block'">Delete</button>
+                                    <button class="delete-btn" data-modal="modal-<?= $book->id ?>">Delete</button>
 
-                                    <div id="modal-<?= $book->id ?>" class="modal">
-                                        <span onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="close">&times;</span>
+                                    <div data-modal="modal-<?= $book->id ?>" id="modal-<?= $book->id ?>" class="modal" >
+                                        <span class="close">&times;</span>
 
                                         <form class="modal-content" action="book_delete.php" method="GET">
                                             <input type="hidden" name="id" value="<?= $book->id ?>">
 
                                             <div class="container">
                                                 <h1>Delete Book</h1>
-                                                <p>Are you sure you want to delete this book?</p>
+                                                <p>Are you sure you want to delete "<?= h($book->title) ?>"?</p>
 
                                                 <div class="clearfix">
-                                                    <button type="button" onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="cancelbtn">Cancel</button>
+                                                    <button type="button" class="cancelbtn" data-modal="modal-<?= $book->id ?>">Cancel</button>
                                                     <button type="submit" class="deletebtn">Delete</button>
                                                 </div>
                                             </div>
