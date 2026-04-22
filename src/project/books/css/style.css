@@ -163,11 +163,16 @@ body {
 	justify-content: flex-end;
 }
 
-.hCard .actions a {
+.hCard .actions a, 
+.hCard .actions button {
 	font-weight: 600;
 	color: #2563eb;
 	font-size: 13px;
 	text-transform: uppercase;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
 }
 
 .hCard .actions a:hover {
@@ -177,7 +182,7 @@ body {
 .hCard img {
 	width: 340px;
 	margin-bottom: 10px;
-	object-fit: cover;
+	object-fit: contain;
 	border: 1px solid #d6d9de;
 	height: 340px;
 }

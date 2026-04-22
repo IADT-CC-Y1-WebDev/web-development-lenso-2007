@@ -51,7 +51,7 @@ catch (PDOException $e) {
                 <h1>Edit Book</h1>
             </div>
             <div class="width-12">
-                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data">
+                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data" novalidate>
 
                     <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
                     
@@ -89,7 +89,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="isbn">ISBN:</label>
                         <div>
-                            <input type="text" id="isbn" name="isbn" data-minlength="13" data-maxlength="13" value="<?= old('isbn', $book->isbn) ?>" required>
+                            <input type="text" id="isbn" name="isbn" data-minlength="14" data-maxlength="14" value="<?= old('isbn', $book->isbn) ?>" required>
                             <span id="isbn_error" class="error"></span>
                             <p><?= error('isbn') ?></p>
                         </div>

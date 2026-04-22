@@ -46,7 +46,7 @@ catch (PDOException $e) {
  
                         <div class="actions">
                             <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a> /
-                            <button onclick="document.getElementById('modal-<?= $book->id ?>').style.display='block'">Delete</button>
+                            <button onclick="document.getElementById('modal-<?= $book->id ?>').style.display='block'">Delete</button> /
 
                             <div id="modal-<?= $book->id ?>" class="modal">
                                 <span onclick="document.getElementById('modal-<?= $book->id ?>').style.display='none'" class="close">&times;</span>

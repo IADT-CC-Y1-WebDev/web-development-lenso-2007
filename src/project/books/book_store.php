@@ -61,16 +61,20 @@ try {
         throw new Exception('Failed to process and save the image.');
     }
 
+    $endISBN = substr($data['isbn'], 3, 15);
+    $formatISBN = substr_replace($data['isbn'], "-" . $endISBN, 3);
+
     $book = new Book();
     $book->title = $data['title'];
     $book->author = $data['author'];
     $book->publisher_id = $data['publisher_id'];
     $book->year = $data['year'];
-    $book->isbn = $data['isbn'];
+    $book->isbn = $formatISBN;
     $book->description = $data['description'];
     $book->cover_filename = $coverFilename;
 
  
+
 
     $book->save();
     if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
