@@ -37,9 +37,7 @@ catch (Exception $e) {
                     <h1><?= $format->name ?></h1>
                 </div>  
                 <div class="buttonHolder">
-                    <div class="button">
-                        <a href="format_list.php">Back to Formats</a>
-                    </div>
+                    <a href="format_list.php" class="button">Back to Formats</a>
                 </div>
             </div>
                 <div class="width-12 cards" id="book_cards">

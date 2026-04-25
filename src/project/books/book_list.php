@@ -20,21 +20,17 @@ catch (PDOException $e) {
     <body>
         <div class="container">
             <div class="width-12 header">
-                <?php require 'php/inc/flash_message.php'; ?>
                 <div class="bookList title">
                     <h1>The Book Library</h1>
                 </div>  
                 <div class="buttonHolder">
-                    <div class="button">
-                        <a href="book_create.php">Add New Book</a>
-                    </div>
-                    <div class="button">
-                        <a href="publisher_list.php">View all Publishers</a>
-                    </div>
-                    <div class="button">
-                        <a href="format_list.php">View all Formats</a>
-                    </div>
+                        <a href="book_create.php" class="button">Add New Book</a>
+                        <a href="publisher_list.php" class="button">View all Publishers</a>
+                        <a href="format_list.php" class="button">View all Formats</a>
                 </div>
+            </div>
+            <div class="width-12 flash">
+                <?php require 'php/inc/flash_message.php'; ?>
             </div>
             <?php if (!empty($books)) { ?>
                 <div class="width-12 filters">
@@ -113,7 +109,6 @@ catch (PDOException $e) {
                                         <form class="modal-content" action="book_delete.php" method="GET">
                                             <input type="hidden" name="id" value="<?= $book->id ?>">
 
-                                            <div class="container">
                                                 <h1>Delete Book</h1>
                                                 <p>Are you sure you want to delete "<?= h($book->title) ?>"?</p>
 
@@ -121,7 +116,6 @@ catch (PDOException $e) {
                                                     <button type="button" class="cancelbtn" data-modal="modal-<?= $book->id ?>">Cancel</button>
                                                     <button type="submit" class="deletebtn">Delete</button>
                                                 </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>

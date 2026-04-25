@@ -44,14 +44,14 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
-            <div class="width-12">
+            <div class="width-12 flash">
                 <?php require 'php/inc/flash_message.php'; ?>
             </div>
-            <div class="width-12">
-                <h1>Edit Book</h1>
-            </div>
+
             <div class="width-12">
                 <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data" novalidate>
+
+                    <h1>Edit Book</h1>
 
                     <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
                     

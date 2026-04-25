@@ -20,16 +20,16 @@ catch (PDOException $e) {
     <body>
         <div class="container">
             <div class="width-12 header">
+            <div class="flash">
                 <?php require 'php/inc/flash_message.php'; ?>
-                <h1>Formats</h1>
+            </div>
+                <div class="titleHolder">
+                    <h1>Formats</h1>
+                </div>
                 <div class="buttonHolder">
-                    <div class="button">
-                        <a href="format_create.php">Add New Format</a>
-                    </div>
-                    <div class="button">
-                        <a href="book_list.php">Back to books</a>
-                    </div>
-                </div> 
+                    <a href="format_create.php" class="button">Add New Format</a>
+                    <a href="book_list.php" class="button">Back to books</a>
+                </div>
             </div>
         <div class="container">
             <?php if (empty($formats)) { ?>
@@ -53,14 +53,12 @@ catch (PDOException $e) {
                                         <form class="modal-content" action="format_delete.php" method="GET">
                                             <input type="hidden" name="id" value="<?= $format->id ?>">
 
-                                            <div class="container">
-                                                <h1>Delete Book</h1>
-                                                <p>Are you sure you want to delete "<?= h($format->name) ?>"?</p>
+                                            <h1>Delete Book</h1>
+                                            <p>Are you sure you want to delete "<?= h($format->name) ?>"?</p>
 
-                                                <div class="clearfix">
-                                                    <button type="button" class="cancelbtn" data-modal="modal-<?= $format->id ?>">Cancel</button>
-                                                    <button type="submit" class="deletebtn">Delete</button>
-                                                </div>
+                                            <div class="clearfix">
+                                                 <button type="button" class="cancelbtn" data-modal="modal-<?= $format->id ?>">Cancel</button>
+                                                 <button type="submit" class="deletebtn">Delete</button>
                                             </div>
                                         </form>
                                     </div>

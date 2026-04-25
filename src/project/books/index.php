@@ -27,15 +27,6 @@
                     <a href="book_list.php">Open</a>
                 </div>
             </div>
-
-            <div class="card">
-                <h2>Add New Book</h2>
-                <p>Add a new book here</p>
-                <div class="actions">
-                    <a href="book_create.php">Create</a>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

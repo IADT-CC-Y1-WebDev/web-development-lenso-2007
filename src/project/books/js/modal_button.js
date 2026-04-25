@@ -10,7 +10,7 @@ cardContainer.addEventListener('click', (e) => {
   console.log(el.className === "delete-btn");
 
   if(el.className === "delete-btn"){
-    document.getElementById(el.dataset.modal).style.display = "block";
+    document.getElementById(el.dataset.modal).style.display = "flex";
   }
   else if(el.className === "cancelbtn" || el.className === "modal"){
     document.getElementById(el.dataset.modal).style.display = "none";

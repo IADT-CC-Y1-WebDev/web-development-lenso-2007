@@ -20,14 +20,15 @@ catch (PDOException $e) {
     <body>
         <div class="container">
             <div class="width-12 header">
-                <?php require 'php/inc/flash_message.php'; ?>
-                <h1>Publishers</h1>
+                <div class="flash">
+                    <?php require 'php/inc/flash_message.php'; ?>
+                </div>
+                <div class="titleHolder">
+                    <h1>Publishers</h1>
+                </div>  
                 <div class="buttonHolder">
-                    <div class="button">
-                        <a href="publisher_create.php">Add New Publisher</a>
-                    </div>
-                    <div class="button">
-                        <a href="book_list.php">Back to books</a>
+                        <a href="publisher_create.php" class="button">Add New Publisher</a>
+                        <a href="book_list.php" class="button">Back to books</a>
                     </div>
                 </div> 
             </div>
@@ -53,14 +54,12 @@ catch (PDOException $e) {
                                         <form class="modal-content" action="publisher_delete.php" method="GET">
                                             <input type="hidden" name="id" value="<?= $publisher->id ?>">
 
-                                            <div class="container">
-                                                <h1>Delete Book</h1>
-                                                <p>Are you sure you want to delete "<?= h($publisher->name) ?>"?</p>
+                                            <h1>Delete Book</h1>
+                                            <p>Are you sure you want to delete "<?= h($publisher->name) ?>"?</p>
 
-                                                <div class="clearfix">
-                                                    <button type="button" class="cancelbtn" data-modal="modal-<?= $publisher->id ?>">Cancel</button>
-                                                    <button type="submit" class="deletebtn">Delete</button>
-                                                </div>
+                                            <div class="clearfix">
+                                                <button type="button" class="cancelbtn" data-modal="modal-<?= $publisher->id ?>">Cancel</button>
+                                                <button type="submit" class="deletebtn">Delete</button>
                                             </div>
                                         </form>
                                     </div>

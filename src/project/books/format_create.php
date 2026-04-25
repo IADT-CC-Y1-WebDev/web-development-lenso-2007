@@ -24,13 +24,13 @@ catch (PDOException $e) {
     <body>
         <div class="container">
             <div class="width-12">
-                <?php require 'php/inc/flash_message.php'; ?>
-            </div>
-            <div class="width-12">
-                <h1>Create Format</h1>
+                <div class="flash">
+                    <?php require 'php/inc/flash_message.php'; ?>
+                </div>
             </div>
             <div class="width-12">
                 <form id="format_form" action="format_store.php" method="POST" enctype="multipart/form-data" novalidate>
+                    <h1>Create Format</h1>
 
                     <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
 
@@ -51,6 +51,7 @@ catch (PDOException $e) {
                 </form>
             </div>
         </div>
+        <script src="js/format_validation.js"></script>
     </body>
 </html>
 <?php
