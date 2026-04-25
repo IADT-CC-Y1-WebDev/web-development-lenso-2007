@@ -70,7 +70,7 @@ function isMaxLength(value, max) {
 }
 
 function isOnlyNumbers(value) {
-    return /^[0-9]+$/.test(String(value).trim());
+    return /^[0-9-]+$/.test(String(value).trim());
 }
 
 function isInRange(value, min, max) {

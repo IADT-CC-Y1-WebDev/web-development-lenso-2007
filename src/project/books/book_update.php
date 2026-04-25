@@ -37,7 +37,7 @@ try {
         'author' => 'required|notempty|min:3|max:255',
         'publisher_id' => 'required|integer',
         'year' => 'required|notempty|integer|minvalue:1900|maxvalue:2099',
-        'isbn' => 'required|notempty|integer|min:13|max:13',
+        'isbn' => 'required|notempty|min:14|max:14',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
         'cover_filename' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
@@ -88,11 +88,15 @@ try {
         }
     }
     
+
+    $endISBN = substr($data['isbn'], 3, 15);
+    $formatISBN = substr_replace($data['isbn'], "-" . $endISBN, 3);
+
     // Update the book instance
     $book->title = $data['title'];
     $book->author = $data['author'];
     $book->year = $data['year'];
-    $book->isbn = $data['isbn'];
+    $book->isbn = $formatISBN;
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
     if ($coverFilename) {
