@@ -1,5 +1,5 @@
-let submitBtn     = document.getElementById('submit_btn');
-let formatForm    = document.getElementById('format_form');
+let submitBtn = document.getElementById('submit_btn');
+let formatForm = document.getElementById('format_form');
 let errorSummaryTop = document.getElementById('error_summary_top');
 
 let nameInput = document.getElementById('name');
