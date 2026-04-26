@@ -23,7 +23,7 @@ try {
         'isbn' => $_POST['isbn'] ?? null,
         'description' => $_POST['description'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
-        'cover' => $_FILES['cover'] ?? null
+        'cover_filename' => $_FILES['cover_filename'] ?? null
     ];
 
       
@@ -36,7 +36,7 @@ try {
         'isbn' => 'required|notempty|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'cover' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
     $validator = new Validator($data, $rules);
@@ -55,7 +55,7 @@ try {
     }
 
     $uploader = new ImageUpload();
-    $coverFilename = $uploader->process($_FILES['cover']);
+    $coverFilename = $uploader->process($_FILES['cover_filename']);
 
     if (!$coverFilename) {
         throw new Exception('Failed to process and save the image.');

@@ -9,7 +9,7 @@ let isbnInput = document.getElementById('isbn');
 let publisherInput = document.getElementById('publisher_id');
 let descriptionInput = document.getElementById('description');
 let formatInputs = document.getElementsByName('format_ids[]');
-let imageInput = document.getElementById('cover');
+let imageInput = document.getElementById('cover_filename');
 
 let titleError = document.getElementById('title_error');
 let authorError = document.getElementById('author_error');
