@@ -89,7 +89,7 @@ try {
     }
     
 
-    $endISBN = substr($data['isbn'], 3, 15);
+    $endISBN = substr($data['isbn'], 4, 15);
     $formatISBN = substr_replace($data['isbn'], "-" . $endISBN, 3);
 
     // Update the book instance

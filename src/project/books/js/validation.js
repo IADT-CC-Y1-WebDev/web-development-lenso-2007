@@ -105,9 +105,9 @@ function onSubmitForm(evt) {
     if (!isRequired(authorInput.value)) {
         addError('author', 'Author is required');
     } else if(!isMinLength(authorInput.value, authorMin)){
-        addError('author', `Author input must be at least ${descMin} characters.`);
+        addError('author', `Author input must be at least ${authorMin} characters.`);
     } else if(!isMaxLength(authorInput.value, authorMax)) {
-        addError('author', `Author input must be less than ${descMin} characters.`);
+        addError('author', `Author input must be less than ${authorMax} characters.`);
     }
 
     if (!isRequired(yearInput.value)) {

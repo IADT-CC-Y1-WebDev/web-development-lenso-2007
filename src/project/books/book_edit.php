@@ -71,7 +71,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="author">Author:</label>
                         <div>
-                            <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
+                            <input type="text" id="author" name="author" data-minlength="3" data-maxlength="255" value="<?= old('author', $book->author) ?>" required>
                             <span id="author_error" class="error"></span>
                             <p><?= error('author') ?></p>
                         </div>
